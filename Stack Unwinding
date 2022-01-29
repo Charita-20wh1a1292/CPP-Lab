@@ -1,0 +1,36 @@
+/******************************************************************************
+  Stack Unwinding
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+void f1() 
+{
+    cout<<"\nf1()start";
+    throw 100;
+    cout<<"\nf1()end";
+}
+void f2() 
+{
+    cout<<"\nf2()start";
+    f1();
+    cout<<"\nf2()end";
+}
+void f3()
+{
+    cout<<"\nf3()start";
+    try
+    {
+        f2();
+    }
+    catch(int i)
+    {
+        cout<<"\ncaught exception "<<i;
+    }
+    cout<<"\nf3()end";
+}
+int main()
+{
+    f3();
+    return 0;
+}
+
