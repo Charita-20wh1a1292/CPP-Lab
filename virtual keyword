@@ -1,0 +1,38 @@
+/******************************************************************************
+
+Write a C++ program to use pointer for both base and derived classes and call the member function. Use Virtual keyword
+
+*******************************************************************************/
+#include <iostream>
+using namespace std;
+class base
+{
+    public:
+        virtual void show()
+        {
+            cout<<" in Base class "<<endl;
+        }
+};
+class derived:public base
+{
+    public:
+        void show()
+        {
+           cout<<"late binding or run time polymorphism"<<endl;
+            cout<<"in Derived class "<<endl;
+        }
+};
+int main(void)
+{
+    
+    base *bp = new derived;
+    base *bptr;
+    derived d;
+    bptr=&d;
+    bp->show();//run time polymorphism
+    bptr->show();
+    d.show();
+    return 0;
+    
+}
+
